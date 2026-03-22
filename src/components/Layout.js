@@ -4,7 +4,7 @@ import { renderVerify } from './Verify';
 import { renderDashboard, renderDashboardLoading } from './Dashboard';
 import { fetchDetails } from '../api/fuel';
 import { generateQR } from '../utils/qr';
-import { updateLucideIcons } from '../utils/ui';
+import { updateLucideIcons, html } from '../utils/ui';
 
 export function render(contentEl, state) {
     if (!contentEl) return;
@@ -36,6 +36,6 @@ export function render(contentEl, state) {
     } catch (err) {
         console.error('Render error:', err);
         // We can't use setError here because it might cause infinite loop if render fails
-        contentEl.innerHTML = `<div class="text-accent text-sm p-4">Render failed: ${err.message}</div>`;
+        contentEl.innerHTML = html`<div class="text-accent text-sm p-4">Render failed: ${err.message}</div>`;
     }
 }

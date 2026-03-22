@@ -1,4 +1,4 @@
-import { updateLucideIcons } from './ui';
+import { updateLucideIcons, sanitize } from './ui';
 
 /**
  * Toast notification system for displaying error and success messages
@@ -37,7 +37,7 @@ export function showToast(message, type = 'error', duration = 6000) {
         <div class="toast-icon ${iconColor}">
             <i data-lucide="${iconName}" class="w-5 h-5"></i>
         </div>
-        <div class="toast-content flex-1 text-sm font-medium">${message}</div>
+        <div class="toast-content flex-1 text-sm font-medium">${sanitize(message)}</div>
     `;
     
     parent.appendChild(toast);

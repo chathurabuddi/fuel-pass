@@ -1,8 +1,9 @@
 import { handleRequestOtp } from '../api/auth';
 import { clearStoredMobileIfModified } from '../state/state';
+import { html } from '../utils/ui';
 
 export function renderLogin(contentEl, state) {
-    contentEl.innerHTML = `
+    contentEl.innerHTML = html`
         <div class="card animate-fade-in">
             <div class="flex items-center space-x-2 mb-6">
                 <i data-lucide="fuel" class="text-primary"></i>
@@ -20,7 +21,7 @@ export function renderLogin(contentEl, state) {
                     </div>
                     
                     <button type="submit" class="button button-primary" data-original-text="Request OTP" ${state.loading ? 'disabled' : ''}>
-                        ${state.loading ? '<div class="spinner"></div>' : 'Request OTP <i data-lucide="arrow-right" class="w-4 h-4"></i>'}
+                        ${state.loading ? html`<div class="spinner"></div>` : html`Request OTP <i data-lucide="arrow-right" class="w-4 h-4"></i>`}
                     </button>
                 </div>
             </form>

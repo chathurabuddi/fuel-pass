@@ -1,13 +1,15 @@
 import { handleVerifyOtp } from '../api/auth';
+import { html } from '../utils/ui';
+import { formatMobileNo } from '../utils/validation';
 
 export function renderVerify(contentEl, state) {
-    contentEl.innerHTML = `
+    contentEl.innerHTML = html`
         <div class="card animate-fade-in">
             <div class="flex items-center space-x-2 mb-6">
                 <i data-lucide="shield-check" class="text-primary"></i>
                 <h2 class="text-xl">Verify OTP</h2>
             </div>
-            <p class="mb-6">We've sent a 6-digit code to <strong>+94 ${state.mobileNo}</strong>.</p>
+            <p class="mb-6">We've sent a 6-digit code to <strong>${formatMobileNo(state.mobileNo)}</strong>.</p>
             
             <form id="verify-form">
                 <div class="space-y-4">
@@ -17,7 +19,7 @@ export function renderVerify(contentEl, state) {
                     </div>
                     
                     <button type="submit" class="button button-primary" data-original-text="Verify & Login" ${state.loading ? 'disabled' : ''}>
-                         ${state.loading ? '<div class="spinner"></div>' : 'Verify & Login <i data-lucide="arrow-right" class="w-4 h-4"></i>'}
+                         ${state.loading ? html`<div class="spinner"></div>` : html`Verify & Login <i data-lucide="arrow-right" class="w-4 h-4"></i>`}
                     </button>
                     
                     <button type="button" class="button button-secondary text-sm" onclick="location.reload()">

@@ -1,6 +1,7 @@
-import { state, toggleTheme } from './state/state';
+import { state, toggleTheme, setScreen } from './state/state';
 import { render } from './components/Layout';
 import { SCREENS } from './constants';
+import { html } from './utils/ui';
 
 // UI Elements
 const contentEl = document.getElementById('content');
@@ -21,14 +22,14 @@ function init() {
         }
 
         if (state.jwt) {
-            state.screen = SCREENS.DASHBOARD;
+            setScreen(SCREENS.DASHBOARD);
         }
 
         render(contentEl, state);
     } catch (err) {
         console.error('Initialization failed:', err);
         if (contentEl) {
-            contentEl.innerHTML = `
+            contentEl.innerHTML = html`
                 <div class="card border-accent text-center">
                     <h2 class="text-accent mb-2">Something went wrong</h2>
                     <p class="text-sm mb-4">${err.message}</p>
