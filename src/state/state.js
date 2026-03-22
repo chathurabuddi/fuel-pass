@@ -35,9 +35,9 @@ export const state = new Proxy(_state, {
     }
 });
 
-export function updateState(updates) {
+export function updateState(updates, silent = false) {
     Object.assign(_state, updates);
-    if (_state.onStateChange) {
+    if (!silent && _state.onStateChange) {
         _state.onStateChange();
     }
 }
@@ -73,11 +73,12 @@ export function setMobileNo(mobileNo) {
 }
 
 export function clearStoredMobileIfModified(newMobileNo) {
+    const stripped = newMobileNo.replace(/^0/, '');
     const stored = localStorage.getItem('fuel_pass_mobile');
-    if (stored && newMobileNo !== stored) {
+    if (stored && stripped !== stored) {
         localStorage.removeItem('fuel_pass_mobile');
     }
-    updateState({ mobileNo: newMobileNo });
+    updateState({ mobileNo: stripped }, true);
 }
 
 export function setFuelPassData(fuelPassData) {

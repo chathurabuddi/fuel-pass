@@ -7,7 +7,7 @@
 
 ## Architecture and data flow (read these first)
 - `src/main.js` wires `state.onStateChange = () => render(contentEl, state)`; all meaningful UI updates come from state actions.
-- `src/state/state.js` is the source of truth; use exported setters (`setScreen`, `setLoading`, `setError`, etc.), not direct `state.* = ...` mutations.
+- `src/state/state.js` is the source of truth; use exported setters (`setScreen`, `setLoading`, `setError`, etc.), not direct `state.* = ...` mutations. `updateState` can take a second `silent` parameter to update state without triggering a re-render.
 - Login flow: `renderLogin` (`src/components/Login.js`) -> `handleRequestOtp` (`src/api/auth.js`) -> `apiRequest('/otp/login/consumer')`.
 - Verify flow: `renderVerify` -> `handleVerifyOtp` -> `setJwt` + `setScreen(DASHBOARD)`.
 - Dashboard flow: `Layout.render` detects `state.jwt` without data, shows loading, then calls `fetchDetails` (`src/api/fuel.js`) and finally `renderDashboard`.
