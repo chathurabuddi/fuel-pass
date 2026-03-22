@@ -114,6 +114,8 @@ The application is designed as a **Progressive Web App (PWA)** ready experience.
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
+When a change affects architecture, user flow, API behavior, scripts, or setup, update both `AGENTS.md` and `README.md` in the same pull request.
+
 Please see [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to get started.
 
 ---
