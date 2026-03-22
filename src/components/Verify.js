@@ -32,6 +32,12 @@ export function renderVerify(contentEl, state) {
     `;
     const form = document.getElementById('verify-form');
     if (form) {
-        form.addEventListener('submit', (e) => handleVerifyOtp(e, state.mobileNo));
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const otpInput = document.getElementById('otp');
+            if (otpInput) {
+                handleVerifyOtp(otpInput.value, state.mobileNo);
+            }
+        });
     }
 }

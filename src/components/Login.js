@@ -29,7 +29,13 @@ export function renderLogin(contentEl, state) {
     `;
     const form = document.getElementById('login-form');
     if (form) {
-        form.addEventListener('submit', handleRequestOtp);
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const mobileInput = document.getElementById('mobileNo');
+            if (mobileInput) {
+                handleRequestOtp(mobileInput.value);
+            }
+        });
     }
     const mobileInput = document.getElementById('mobileNo');
     if (mobileInput) {
