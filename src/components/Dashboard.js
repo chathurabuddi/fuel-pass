@@ -39,7 +39,7 @@ export function renderDashboard(contentEl, state) {
             </div>
 
             <!-- Flippable Card Container -->
-            <div id="flip-card-container" class="flip-card">
+            <div id="flip-card-container" class="flip-card mt-4">
                 <div class="flip-card-inner">
                     <!-- Front Side: Vehicle & QR -->
                     <div id="flip-card-front" class="flip-card-front card text-center space-y-6 pt-8 pb-8 relative cursor-pointer">
@@ -47,7 +47,7 @@ export function renderDashboard(contentEl, state) {
                             <div class="text-2xl font-bold tracking-tighter">${(data && data.itemNo) || '---'}</div>
                         </div>
 
-                        <div class="qr-container mx-auto">
+                        <div class="qr-container mx-auto mt-4">
                             <canvas id="qr-canvas"></canvas>
                         </div>
 
