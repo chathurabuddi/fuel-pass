@@ -33,6 +33,7 @@
 - Lint: `npm run lint`
 - Build: `npm run build`
 - Preview production build: `npm run preview`
+- Deployment: The project is configured for GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`). Pushing to the `master` branch triggers an automatic build and deploy.
 - There is no real test suite yet (`npm test` intentionally exits with error).
 
 ## Change checklist for agents

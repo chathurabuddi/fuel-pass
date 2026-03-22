@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+  base: '/fuel-pass/',
   server: {
     proxy: {
       '/api': {

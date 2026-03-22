@@ -99,6 +99,22 @@ npm run preview
 
 ---
 
+## 🚀 Deployment
+
+The project is configured for automatic deployment to **GitHub Pages** using GitHub Actions.
+
+- **Trigger**: Any push to the `master` branch.
+- **Workflow**: `.github/workflows/deploy.yml` builds the app and deploys the `dist` folder.
+- **Base Path**: The application is configured to run on the `/fuel-pass/` base path (see `vite.config.js`).
+
+To set up the initial deployment:
+1. Go to your repository settings on GitHub.
+2. Navigate to **Pages**.
+3. Under **Build and deployment > Source**, select **GitHub Actions**.
+4. Once you push the changes, the workflow will automatically start and deploy your site.
+
+---
+
 ## 📲 Mobile Integration & Wallet
 
 The application is designed as a **Progressive Web App (PWA)** ready experience. It includes UI integration points for:
