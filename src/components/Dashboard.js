@@ -1,4 +1,4 @@
-import { logout, toggleTheme } from '../state/state';
+import { logout } from '../state/state';
 import { addToWallet } from '../utils/wallet';
 import appleWalletSvg from '../assets/apple-wallet.svg?raw';
 import googleWalletSvg from '../assets/google-wallet.svg?raw';
@@ -56,7 +56,7 @@ export function renderDashboard(contentEl, state) {
                         </div>
                     </div>
 
-                    <!-- Back Side: Quota Details -->
+                    <!-- Backside: Quota Details -->
                     <div id="flip-card-back" class="flip-card-back card relative text-left pt-6 pb-6 cursor-pointer">
                         <div class="quota-grid">
                             <div class="quota-item">

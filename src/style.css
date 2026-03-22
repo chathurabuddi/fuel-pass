@@ -379,7 +379,7 @@ p {
 }
 .flex { display: flex; }
 .flex-col { flex-direction: column; }
-.flex-1 { flex: 1 1 0%; }
+.flex-1 { flex: 1 1 0; }
 .items-center { align-items: center; }
 .justify-center { justify-content: center; }
 .justify-end { justify-content: end; }
