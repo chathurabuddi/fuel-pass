@@ -3,43 +3,60 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Vite](https://img.shields.io/badge/Vite-B73BFE?style=flat&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Lucide](https://img.shields.io/badge/Lucide-EB5757?style=flat&logo=lucide&logoColor=white)](https://lucide.dev/)
 
-An open-source redesign of the official [National Fuel Pass](https://fuelpass.gov.lk/) system in Sri Lanka. This project aims to demonstrate how the existing system can be improved with a modern, mobile-first UI/UX while utilizing the same underlying APIs as the official website.
+An open-source redesign of the official [National Fuel Pass](https://fuelpass.gov.lk/) system in Sri Lanka. This project demonstrates how a modern, mobile-first UI/UX can improve the user experience of a vital public service, while utilizing the **official APIs** directly.
 
-> [!NOTE]
-> This is an **unofficial** open-source project. You can access the official National Fuel Pass website at [fuelpass.gov.lk](https://fuelpass.gov.lk/).
+> [!IMPORTANT]
+> This is an **unofficial** community project. You can access the official National Fuel Pass website at [fuelpass.gov.lk](https://fuelpass.gov.lk/).
 
 ---
 
 ## 🎯 Motivation
 
-The official [National Fuel Pass](https://fuelpass.gov.lk/) system is a vital tool for citizens, but its UI/UX can be significantly improved for a better user experience. This project was developed to show that a more intuitive, modern design is possible, all while using the **same official APIs**.
+The official [National Fuel Pass](https://fuelpass.gov.lk/) system is a vital tool for citizens, but its interface can be optimized for better mobile accessibility and user engagement. This redesign explores a more intuitive, modern design that prioritizes:
 
-Key improvements in this redesign:
-- **📱 Mobile-First Design**: Optimized for the most common use case — checking your pass on the go.
-- **✨ Enhanced UX**: Simplified workflows and interactive elements like the flippable QR card.
-- **💼 Wallet Integration**: Direct support for Apple and Google Wallets, reducing the need to rely on screenshots or SMS.
+- **📱 Mobile-First Accessibility**: Optimized specifically for checking passes and quotas on the go.
+- **✨ Enhanced UX/UI**: Clean interface with smooth animations and interactive elements.
+- **⚡ Performance**: Built with Vanilla JS and Vite for near-instant load times and a lightweight footprint.
 
 ---
 
 ## ✨ Features
 
-- **🔐 Secure Authentication**: Simple and secure login process.
-- **📊 Real-time Quota Tracking**: View your remaining and eligible fuel quotas at a glance.
-- **🎴 Interactive Fuel Card**: A flippable card that shows your QR code on the front and quota details on the back.
-- **📱 Wallet Integration**: Add your fuel pass directly to **Apple Wallet** or **Google Wallet** for quick access.
-- **🌓 Modern UI/UX**: A dark-themed, mobile-first design with smooth animations.
-- **🔍 Quick Verification**: Built-in verification features for fuel pass validity.
+- **🔐 Secure Authentication**: Integrated with the official OTP-based login system.
+- **📊 Real-time Quota Tracking**: Visual progress bars and clear indicators for remaining and eligible fuel quotas.
+- **🎴 Interactive Fuel Card**: A flippable card component that shows the QR code on the front and detailed quota information on the back.
+- **🌓 Dynamic Theming**: Full support for Dark and Light modes with a floating theme switcher.
+- **📱 Wallet Integration (POC)**: UI support for Apple and Google Wallets, demonstrating how passes can be integrated for native mobile access.
+- **🔔 Toast Notifications**: In-app notifications for status updates and error handling.
+- **🔍 Quick Verification**: Fast and easy verification of fuel pass validity using official backend data.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework**: [Vite](https://vitejs.dev/) (Vanilla JS)
-- **Styling**: Custom CSS with CSS Variables (Modern, Dark Theme)
-- **Icons**: [Lucide](https://lucide.dev/)
-- **QR Code Generation**: [qrcode](https://www.npmjs.com/package/qrcode)
-- **State Management**: Reactive state-based rendering.
+- **Frontend**: [Vite](https://vitejs.dev/) (Vanilla JavaScript - No heavy frameworks)
+- **Styling**: Custom CSS with **CSS Variables** for theming and responsive design.
+- **Icons**: [Lucide](https://lucide.dev/) for consistent, lightweight iconography.
+- **QR Code**: [qrcode](https://www.npmjs.com/package/qrcode) for client-side generation.
+- **State Management**: A custom reactive state-based rendering system.
+
+---
+
+## 📁 Project Structure
+
+```text
+src/
+├── api/          # API integration with official fuelpass.gov.lk endpoints
+├── assets/       # Static assets like images and SVGs
+├── components/   # Modular UI components (Dashboard, Login, Verify, etc.)
+├── state/        # Reactive application state management
+├── utils/        # Utility functions (QR generation, Toast, Wallet POC, etc.)
+├── constants.js  # App-wide constants and screen definitions
+├── main.js       # Application entry point
+└── style.css     # Global styles and theme definitions
+```
 
 ---
 
@@ -82,12 +99,14 @@ npm run preview
 
 ---
 
-## 📲 Mobile Integration
+## 📲 Mobile Integration & Wallet
 
-The application is fully responsive and designed to be used as a mobile web app. It also supports direct integration with digital wallets:
+The application is designed as a **Progressive Web App (PWA)** ready experience. It includes UI integration points for:
 
-- **Apple Wallet**: Generate a `.pkpass` file directly for iOS devices.
-- **Google Wallet**: Integration with Google Wallet for Android devices.
+- **Apple Wallet**: Concept for direct `.pkpass` file generation.
+- **Google Wallet**: Concept for Google Wallet API integration.
+
+*Note: In this demo version, wallet buttons currently trigger a QR code download as a proof-of-concept.*
 
 ---
 
@@ -117,6 +136,6 @@ Distributed under the **MIT License**. See [LICENSE](LICENSE) for more informati
 
 ## 🙏 Credits
 
-- Ministry of Power & Energy
+- Ministry of Power & Energy, Sri Lanka
 - Dialog Axiata PLC
 - Millennium IT ESP
