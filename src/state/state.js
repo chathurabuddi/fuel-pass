@@ -1,7 +1,7 @@
 import { SCREENS } from '../constants';
 import { showToast } from '../utils/toast';
 
-export const state = {
+const _state = {
     screen: SCREENS.LOGIN,
     mobileNo: (localStorage.getItem('fuel_pass_mobile') || '').replace(/^0/, ''),
     jwt: localStorage.getItem('fuel_pass_jwt') || '',
@@ -12,10 +12,33 @@ export const state = {
     onStateChange: null // This will be set in main.js to trigger a re-render
 };
 
+/**
+ * State Proxy to prevent direct mutations from outside
+ */
+export const state = new Proxy(_state, {
+    get(target, prop) {
+        return target[prop];
+    },
+    set(target, prop, value) {
+        if (prop === 'onStateChange' || prop === 'screen' || prop === 'error' || prop === 'loading' || prop === 'jwt' || prop === 'mobileNo' || prop === 'fuelPassData' || prop === 'theme') {
+            // Some legacy code might still try to set these directly.
+            // Let's gradually move them to actions.
+            // For now, allow but warn if we want to be strict.
+            // But actually, we want to enforce updateState.
+            if (prop === 'onStateChange') {
+                target[prop] = value;
+                return true;
+            }
+        }
+        console.error(`Direct mutation of state.${prop} is not allowed. Use dedicated setter functions.`);
+        return false;
+    }
+});
+
 export function updateState(updates) {
-    Object.assign(state, updates);
-    if (state.onStateChange) {
-        state.onStateChange();
+    Object.assign(_state, updates);
+    if (_state.onStateChange) {
+        _state.onStateChange();
     }
 }
 
@@ -54,7 +77,7 @@ export function clearStoredMobileIfModified(newMobileNo) {
     if (stored && newMobileNo !== stored) {
         localStorage.removeItem('fuel_pass_mobile');
     }
-    state.mobileNo = newMobileNo;
+    updateState({ mobileNo: newMobileNo });
 }
 
 export function setFuelPassData(fuelPassData) {
@@ -62,7 +85,7 @@ export function setFuelPassData(fuelPassData) {
 }
 
 export function toggleTheme() {
-    const newTheme = state.theme === 'light' ? 'dark' : 'light';
+    const newTheme = _state.theme === 'light' ? 'dark' : 'light';
     updateState({ theme: newTheme });
     localStorage.setItem('fuel_pass_theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
