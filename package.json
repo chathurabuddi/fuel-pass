@@ -1,0 +1,23 @@
+{
+  "name": "fuel-pass",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "prepreview": "npm run build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "chathurabuddi <chathu.buddi@gmail.com> (http://chathurabuddi.lk/)",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "lucide": "^1.0.0-rc.1",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "vite": "^8.0.1"
+  }
+}

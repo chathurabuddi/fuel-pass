@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>National Fuel Pass</title>
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body class="bg-background text-text selection:bg-primary/20">
+    <div id="app" class="min-h-screen flex flex-col items-center justify-center p-4">
+        <!-- Main content will be injected here -->
+        <div id="content" class="w-full max-w-md">
+            <!-- Loader/Initial State -->
+            <div id="loading" class="flex flex-col items-center justify-center space-y-4 animate-pulse">
+                <div class="w-12 h-12 border-4 border-surface border-t-primary rounded-full animate-spin"></div>
+                <span class="text-sm text-secondary">Initialising...</span>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>
