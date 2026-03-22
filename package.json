@@ -1,13 +1,15 @@
 {
   "name": "fuel-pass",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "build": "vite build",
     "prepreview": "npm run build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "chathurabuddi <chathu.buddi@gmail.com> (http://chathurabuddi.lk/)",
@@ -18,6 +20,9 @@
     "qrcode": "^1.5.4"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.1.0",
+    "globals": "^17.4.0",
     "vite": "^8.0.1"
   }
 }

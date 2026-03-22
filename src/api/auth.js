@@ -1,12 +1,12 @@
 import { apiRequest } from './api';
-import { updateState, setScreen, setError, setLoading, setJwt, setMobileNo } from '../state/state';
+import { setScreen, setError, setLoading, setJwt, setMobileNo } from '../state/state';
 import { SCREENS } from '../constants';
 import { toast } from '../utils/toast';
 
 export async function handleRequestOtp(e) {
     e.preventDefault();
     let mobileNo = document.getElementById('mobileNo').value.replace(/\s+/g, '');
-    
+
     // Validation
     if (!mobileNo) {
         setError('Mobile number is required');
@@ -56,7 +56,7 @@ export async function handleVerifyOtp(e, mobileNo) {
         setError('OTP is required');
         return;
     }
-    
+
     if (!/^\d+$/.test(otp)) {
         setError('OTP should only contain digits');
         return;
