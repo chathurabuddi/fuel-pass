@@ -5,6 +5,7 @@ export const state = {
     screen: SCREENS.LOGIN,
     mobileNo: (localStorage.getItem('fuel_pass_mobile') || '').replace(/^0/, ''),
     jwt: localStorage.getItem('fuel_pass_jwt') || '',
+    theme: localStorage.getItem('fuel_pass_theme') || 'dark',
     fuelPassData: null,
     loading: false,
     error: null,
@@ -58,6 +59,13 @@ export function clearStoredMobileIfModified(newMobileNo) {
 
 export function setFuelPassData(fuelPassData) {
     updateState({ fuelPassData });
+}
+
+export function toggleTheme() {
+    const newTheme = state.theme === 'light' ? 'dark' : 'light';
+    updateState({ theme: newTheme });
+    localStorage.setItem('fuel_pass_theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
 }
 
 export function logout() {

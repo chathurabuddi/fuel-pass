@@ -1,4 +1,4 @@
-import { logout } from '../state/state';
+import { logout, toggleTheme } from '../state/state';
 import { addToWallet } from '../utils/wallet';
 import appleWalletSvg from '../assets/apple-wallet.svg?raw';
 import googleWalletSvg from '../assets/google-wallet.svg?raw';

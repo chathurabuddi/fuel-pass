@@ -26,6 +26,12 @@ export function render(contentEl, state) {
             }
         }
 
+        // Update the floating theme toggle icon
+        const themeIcon = document.getElementById('theme-icon');
+        if (themeIcon) {
+            themeIcon.setAttribute('data-lucide', state.theme === 'light' ? 'moon' : 'sun');
+        }
+
         updateLucideIcons();
     } catch (err) {
         console.error('Render error:', err);

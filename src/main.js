@@ -1,15 +1,24 @@
-import { state } from './state/state';
+import { state, toggleTheme } from './state/state';
 import { render } from './components/Layout';
 import { SCREENS } from './constants';
 
 // UI Elements
 const contentEl = document.getElementById('content');
+const themeToggleBtn = document.getElementById('theme-toggle');
 
 // Initial start with error handling
 function init() {
     try {
         // Set up the re-render trigger
         state.onStateChange = () => render(contentEl, state);
+
+        // Set initial theme
+        document.documentElement.setAttribute('data-theme', state.theme);
+
+        // Add theme toggle listener
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', toggleTheme);
+        }
 
         if (state.jwt) {
             state.screen = SCREENS.DASHBOARD;

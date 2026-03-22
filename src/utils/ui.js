@@ -13,7 +13,9 @@ import {
     CheckCircle,
     AlertCircle,
     Info,
-    Calendar
+    Calendar,
+    Sun,
+    Moon
 } from 'lucide';
 
 export function updateLucideIcons() {
@@ -33,7 +35,9 @@ export function updateLucideIcons() {
                 CheckCircle,
                 AlertCircle,
                 Info,
-                Calendar
+                Calendar,
+                Sun,
+                Moon
             }
         });
     }
