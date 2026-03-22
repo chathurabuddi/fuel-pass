@@ -224,6 +224,54 @@ p {
     margin-top: 1rem;
 }
 
+.quota-progress-container {
+    height: 6px;
+    background-color: rgba(39, 39, 42, 0.5); /* var(--border) with transparency */
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.quota-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    border-radius: var(--radius-lg);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quota-progress-bar.low {
+    background: linear-gradient(90deg, var(--accent) 0%, #ff4d8d 100%);
+}
+
+.date-indicator {
+    display: flex;
+    align-items: stretch;
+    background-color: rgba(26, 26, 26, 0.5);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.date-icon-container {
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background);
+    color: var(--text-muted);
+    flex-shrink: 0;
+    border-right: 1px solid var(--border);
+}
+
+.date-info {
+    flex: 1;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .quota-item {
     background-color: var(--background);
     padding: 0.75rem;
@@ -278,6 +326,7 @@ p {
 .mb-2 { margin-bottom: 0.5rem; }
 .space-y-6 > * + * { margin-top: 1.5rem; }
 .space-y-4 > * + * { margin-top: 1rem; }
+.space-x-3 > * + * { margin-left: 0.75rem; }
 .space-x-2 > * + * { margin-left: 0.5rem; }
 .cursor-pointer { cursor: pointer; }
 .hidden { display: none; }
@@ -305,6 +354,7 @@ p {
 }
 
 .text-xs { font-size: 0.75rem; }
+.text-2xs { font-size: 0.625rem; }
 .text-sm { font-size: 0.875rem; }
 .text-lg { font-size: 1.125rem; }
 .text-xl { font-size: 1.25rem; }
@@ -328,7 +378,9 @@ p {
 .mt-4 { margin-top: 1rem; }
 .mt-2 { margin-top: 0.5rem; }
 .pt-8 { padding-top: 2rem; }
+.pt-6 { padding-top: 1.5rem; }
 .pb-8 { padding-bottom: 2rem; }
+.pb-6 { padding-bottom: 1.5rem; }
 .pt-4 { padding-top: 1rem; }
 .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
 .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
@@ -336,6 +388,7 @@ p {
 .border { border: 1px solid var(--border); }
 .border-t { border-top: 1px solid var(--border); }
 .border-border { border-color: var(--border); }
+.gap-3 { gap: 0.75rem; }
 .gap-2 { gap: 0.5rem; }
 
 .w-12 { width: 3rem; }

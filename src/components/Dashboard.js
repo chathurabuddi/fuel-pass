@@ -21,6 +21,11 @@ export function renderDashboard(contentEl, state) {
         quotaResetDate: [0,0,0]
     };
 
+    const quotaVal = Number(quota.remainingQuota) || 0;
+    const eligibleVal = Number(quota.eligibleQuota) || 0;
+    const percentage = eligibleVal > 0 ? Math.min((quotaVal / eligibleVal) * 100, 100) : 0;
+    const isLow = percentage <= 20;
+
     contentEl.innerHTML = `
         <div class="space-y-6 animate-fade-in">
             <!-- Header Actions -->
@@ -52,35 +57,49 @@ export function renderDashboard(contentEl, state) {
                     </div>
 
                     <!-- Back Side: Quota Details -->
-                    <div id="flip-card-back" class="flip-card-back card relative text-left pt-8 pb-8 cursor-pointer">
-                        <h3 class="text-sm font-semibold mb-4 flex items-center gap-2">
-                            <i data-lucide="fuel" class="w-4 h-4"></i>
-                            Quota Information
-                        </h3>
-                        
+                    <div id="flip-card-back" class="flip-card-back card relative text-left pt-6 pb-6 cursor-pointer">
                         <div class="quota-grid">
                             <div class="quota-item">
                                 <div class="quota-label">Remaining</div>
-                                <div class="quota-value">${(Number(quota.remainingQuota) || 0).toFixed(3)} L</div>
+                                <div class="quota-value">${quotaVal.toFixed(3)} L</div>
                             </div>
                             <div class="quota-item">
                                 <div class="quota-label">Eligible</div>
-                                <div class="quota-value">${(Number(quota.eligibleQuota) || 0).toFixed(3)} L</div>
+                                <div class="quota-value">${eligibleVal.toFixed(3)} L</div>
                             </div>
                         </div>
 
-                        <div class="mt-4 pt-4 border-t border-border flex flex-col space-y-2 text-xs">
-                            <div class="flex justify-between items-center">
-                                <span class="text-text-muted">Quota Expires</span>
-                                <span class="font-medium">${Array.isArray(quota.quotaExpire) ? quota.quotaExpire.join('-') : '---'}</span>
+                        <div class="quota-progress-container">
+                            <div class="quota-progress-bar ${isLow ? 'low' : ''}" style="width: ${percentage}%"></div>
+                        </div>
+                        <div class="flex justify-between items-center text-2xs text-text-muted mt-1 uppercase tracking-wider font-semibold">
+                            <span>Usage Level</span>
+                            <span>${percentage.toFixed(0)}% Left</span>
+                        </div>
+
+                        <div class="mt-2 pt-6 mb-6 flex gap-3">
+                            <div class="date-indicator flex-1">
+                                <div class="date-icon-container">
+                                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                                </div>
+                                <div class="date-info">
+                                    <div class="text-2xs uppercase text-text-muted font-bold tracking-widest">Expires On</div>
+                                    <div class="text-sm font-semibold">${Array.isArray(quota.quotaExpire) ? quota.quotaExpire.join('-') : '---'}</div>
+                                </div>
                             </div>
-                            <div class="flex justify-between items-center">
-                                <span class="text-text-muted">Reset Date</span>
-                                <span class="font-medium">${Array.isArray(quota.quotaResetDate) ? quota.quotaResetDate.join('-') : '---'}</span>
+                            
+                            <div class="date-indicator flex-1">
+                                <div class="date-icon-container">
+                                    <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                                </div>
+                                <div class="date-info">
+                                    <div class="text-2xs uppercase text-text-muted font-bold tracking-widest">Next Reset</div>
+                                    <div class="text-sm font-semibold">${Array.isArray(quota.quotaResetDate) ? quota.quotaResetDate.join('-') : '---'}</div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="mt-auto pt-6 text-center text-xs text-text-muted italic">
+                        <div class="mt-auto pt-6 text-center text-xs text-text-muted">
                             Tap the card to see your QR code
                         </div>
                     </div>

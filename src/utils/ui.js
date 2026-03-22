@@ -1,9 +1,40 @@
-import { createIcons, LogIn, Phone, ShieldCheck, Fuel, QrCode, Wallet, ArrowRight, RefreshCw, RotateCw, PowerOff, CheckCircle, AlertCircle, Info } from 'lucide';
+import {
+    createIcons,
+    LogIn,
+    Phone,
+    ShieldCheck,
+    Fuel,
+    QrCode,
+    Wallet,
+    ArrowRight,
+    RefreshCw,
+    RotateCw,
+    PowerOff,
+    CheckCircle,
+    AlertCircle,
+    Info,
+    Calendar
+} from 'lucide';
 
 export function updateLucideIcons() {
     if (typeof createIcons === 'function') {
         createIcons({
-            icons: { LogIn, Phone, ShieldCheck, Fuel, QrCode, Wallet, ArrowRight, RefreshCw, RotateCw, PowerOff, CheckCircle, AlertCircle, Info }
+            icons: {
+                LogIn,
+                Phone,
+                ShieldCheck,
+                Fuel,
+                QrCode,
+                Wallet,
+                ArrowRight,
+                RefreshCw,
+                RotateCw,
+                PowerOff,
+                CheckCircle,
+                AlertCircle,
+                Info,
+                Calendar
+            }
         });
     }
 }
