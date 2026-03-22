@@ -3,7 +3,7 @@ import { showToast } from '../utils/toast';
 
 export const state = {
     screen: SCREENS.LOGIN,
-    mobileNo: localStorage.getItem('fuel_pass_mobile') || '',
+    mobileNo: (localStorage.getItem('fuel_pass_mobile') || '').replace(/^0/, ''),
     jwt: localStorage.getItem('fuel_pass_jwt') || '',
     fuelPassData: null,
     loading: false,
@@ -43,8 +43,9 @@ export function setJwt(jwt) {
 }
 
 export function setMobileNo(mobileNo) {
-    updateState({ mobileNo });
-    localStorage.setItem('fuel_pass_mobile', mobileNo);
+    const stripped = mobileNo.replace(/^0/, '');
+    updateState({ mobileNo: stripped });
+    localStorage.setItem('fuel_pass_mobile', stripped);
 }
 
 export function clearStoredMobileIfModified(newMobileNo) {

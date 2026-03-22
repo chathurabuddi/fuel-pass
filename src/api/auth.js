@@ -71,8 +71,9 @@ export async function handleVerifyOtp(e, mobileNo) {
     setError(null);
 
     try {
+        const fullMobileNo = mobileNo.startsWith('0') ? mobileNo : '0' + mobileNo;
         const data = await apiRequest('/otp/login/consumer/verify', 'POST', {
-            mobileNo,
+            mobileNo: fullMobileNo,
             otp
         });
 
