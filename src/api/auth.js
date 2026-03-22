@@ -2,35 +2,18 @@ import { apiRequest } from './api';
 import { setScreen, setError, setLoading, setJwt, setMobileNo } from '../state/state';
 import { SCREENS } from '../constants';
 import { toast } from '../utils/toast';
+import { validateMobileNo } from '../utils/validation';
 
-export async function handleRequestOtp(e) {
-    e.preventDefault();
-    let mobileNo = document.getElementById('mobileNo').value.replace(/\s+/g, '');
-
+export async function handleRequestOtp(mobileNoRaw) {
     // Validation
-    if (!mobileNo) {
+    if (!mobileNoRaw) {
         setError('Mobile number is required');
         return;
     }
 
-    if (!/^\d+$/.test(mobileNo)) {
-        setError('Incorrect mobile number');
-        return;
-    }
-
-    if (mobileNo.length === 9) {
-        if (!mobileNo.startsWith('7')) {
-            setError('Incorrect mobile number');
-            return;
-        }
-        mobileNo = '0' + mobileNo;
-    } else if (mobileNo.length === 10) {
-        if (!mobileNo.startsWith('07')) {
-            setError('Incorrect mobile number');
-            return;
-        }
-    } else {
-        setError('Incorrect mobile number');
+    const mobileNo = validateMobileNo(mobileNoRaw);
+    if (!mobileNo) {
+        setError('Incorrect mobile number. Should be in format 771234567 or 0771234567');
         return;
     }
 
@@ -49,9 +32,8 @@ export async function handleRequestOtp(e) {
     }
 }
 
-export async function handleVerifyOtp(e, mobileNo) {
-    e.preventDefault();
-    const otp = document.getElementById('otp').value.replace(/\s+/g, '');
+export async function handleVerifyOtp(otpRaw, mobileNo) {
+    const otp = otpRaw.replace(/\s+/g, '');
     if (!otp) {
         setError('OTP is required');
         return;
